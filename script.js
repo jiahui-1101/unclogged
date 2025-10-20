@@ -293,8 +293,8 @@ function endClickGame() {
     showResult(imagePaths.constipated, "💩 Constipated - You failed!");
     playFailSound();
     showScreen("end");
-    // 隐藏Play Again按钮
-    playAgainBtn.style.display = "none";
+    // 显示Play Again按钮
+    playAgainBtn.style.display = "block";
     return;
   }
 
@@ -302,8 +302,8 @@ function endClickGame() {
     showResult(imagePaths.disaster, "💥 Too much... oh no.");
     playFailSound();
     showScreen("end");
-    // 隐藏Play Again按钮
-    playAgainBtn.style.display = "none";
+    // 显示Play Again按钮
+    playAgainBtn.style.display = "block";
     return;
   }
 
