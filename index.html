@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toilet Adventure</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen">
+      <h1 class="game-title">💩 Unclogged: The Hero of Your 💩 🚽</h1>
+      <div id="poop-rain"></div>
+      <div class="toilet-door">
+        <img src="images/door.png" alt="Toilet Door" class="door-image" />
+        <div class="door-handle"></div>
+      </div>
+      <button class="start-btn">Start</button>
+    </div>
+
+    <!-- Name Input Screen -->
+    <div id="name-screen" class="screen hidden">
+      <div class="name-container">
+        <div class="shadow-person">
+          <img src="images/shadow-person.png" alt="Shadow Person" />
+        </div>
+        <div class="input-container">
+          <input type="text" class="name-input" placeholder="Enter your name" />
+          <button class="enter-btn">Enter</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Running Scene -->
+    <div id="running-screen" class="screen hidden">
+      <div class="running-background">
+        <div class="blur-background"></div>
+        <div class="blur-background-2"></div>
+        <div class="heartbeat"></div>
+        <div class="urgency-text-container">
+          <div class="urgency-text">Hurry! Hurry! Hurry!</div>
+          <div class="urgency-text">Can't hold it anymore!</div>
+          <div class="urgency-text">The toilet is right ahead!</div>
+        </div>
+        <div class="screen-shake"></div>
+      </div>
+      <div class="fade-text">
+        You finally made it... but something smells off.
+      </div>
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+        <div class="progress-text">Running to the toilet...</div>
+      </div>
+    </div>
+
+    <!-- Toilet Selection -->
+    <div id="toilet-screen" class="screen hidden">
+      <h2>You entered the toilet...</h2>
+      <div class="toilet-gift-only">
+        <img
+          src="images/toilet-gift.png"
+          alt="Gift Toilet"
+          class="toilet-image"
+        />
+        <div class="gift-text">
+          A gift from <span id="random-name">Someone</span> 💀
+        </div>
+        <button class="next-toilet-btn">Go to Next Toilet</button>
+      </div>
+    </div>
+
+    <!-- Clicking Stage -->
+    <div id="click-screen" class="screen hidden">
+      <div class="game-info">
+        <div class="timer">Time: <span id="time-left">60</span>s</div>
+        <div class="counter">Clicks: <span id="click-count">0</span>/200</div>
+      </div>
+
+      <!-- 粪便进度条 -->
+      <div class="poop-progress-container">
+        <div class="poop-progress-background">
+          <div class="poop-progress-bar" id="poop-progress"></div>
+        </div>
+        <div class="poop-text">💩 Poop Progress 💩</div>
+      </div>
+
+      <!-- 摇晃的厕所 -->
+      <div class="toilet-shaking">
+        <img
+          src="images/toilet-normal.png"
+          alt="Toilet"
+          class="shaking-toilet"
+        />
+      </div>
+
+      <!-- 会移动的按钮 -->
+      <button class="push-btn moving-btn">
+        <img src="images/push-button.png" alt="Push Button" />
+        <span>Push 💩</span>
+      </button>
+    </div>
+
+    <!-- Cleaner Popup -->
+    <div id="cleaner-popup" class="cleaner-popup hidden">
+      <div class="cleaner-animation">
+        <img src="images/cleaner.png" alt="Cleaner" />
+      </div>
+      <h3>Cleaner Event</h3>
+      <p>You forgot to lock the door. Pay RM1 to make him leave?</p>
+      <div class="cleaner-options">
+        <button class="cleaner-btn pay-btn">Pay RM1</button>
+        <button class="cleaner-btn decline-btn">Decline</button>
+      </div>
+    </div>
+
+    <!-- End Screen -->
+    <div id="end-screen" class="screen hidden">
+      <div class="end-message">No paper. No water. Only regret.</div>
+      <div class="result-image" id="result-image">
+        <!-- Result image will be dynamically added by JS -->
+      </div>
+      <button class="play-again-btn">Play Again</button>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="bg-music" loop>
+      <source src="sounds/background.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="click-sound">
+      <source src="sounds/click.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="cleaner-sound">
+      <source src="sounds/cleaner.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="success-sound">
+      <source src="sounds/success.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="fail-sound">
+      <source src="sounds/fail.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="running-sound">
+      <source src="sounds/running.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="vomit-sound">
+      <source src="sounds/vomit.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="flush-sound">
+      <source src="sounds/flush.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>

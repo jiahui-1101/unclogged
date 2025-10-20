@@ -1,0 +1,713 @@
+/* style.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+
+body {
+  background-color: #1a1a2e;
+  color: #fff;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Start Screen */
+#start-screen {
+  background-color: #16213e;
+}
+
+.toilet-door {
+  width: 300px;
+  height: 400px;
+  position: relative;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: doorSway 5s infinite alternate ease-in-out;
+}
+
+.door-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.door-handle {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  width: 15px;
+  height: 60px;
+  background: #3b2f0a;
+  border-radius: 10px;
+}
+.game-title {
+  font-family: "Comic Sans MS", "Poppins", cursive;
+  font-size: 2.2rem;
+  color: #f6c942;
+  text-shadow: 2px 2px 10px rgba(118, 118, 22, 0.4);
+  margin-bottom: 25px;
+  animation: titleBounce 2s infinite ease-in-out;
+}
+
+/* 有趣的弹跳动画 */
+@keyframes titleBounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+@keyframes doorSway {
+  0% {
+    transform: rotateY(-2deg);
+  }
+  100% {
+    transform: rotateY(2deg);
+  }
+}
+
+.start-btn {
+  padding: 15px 40px;
+  font-size: 1.5rem;
+  background-color: #e94560;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+}
+
+.start-btn:hover {
+  background-color: #ff6b81;
+  transform: scale(1.05);
+}
+
+/* Name Screen */
+#name-screen {
+  background-color: #0f3460;
+}
+
+.name-container {
+  display: flex;
+  width: 80%;
+  max-width: 600px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shadow-person {
+  width: 200px;
+  height: 300px;
+}
+
+.shadow-person img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name-input {
+  padding: 15px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  width: 250px;
+  text-align: center;
+}
+
+.enter-btn {
+  padding: 10px 30px;
+  font-size: 1.2rem;
+  background-color: #4cc9f0;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Running Screen */
+#running-screen {
+  background: linear-gradient(90deg, #1a1a2e, #16213e, #0f3460);
+  overflow: hidden;
+  position: relative;
+}
+
+.running-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Moving Background */
+.blur-background,
+.blur-background-2 {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background: url("images/running-bg.png") repeat-x;
+  background-size: contain;
+}
+
+.blur-background {
+  animation: runBackground 2s linear infinite;
+  filter: blur(2px);
+}
+
+.blur-background-2 {
+  animation: runBackground 1.5s linear infinite;
+  filter: blur(4px);
+  opacity: 0.7;
+}
+
+@keyframes runBackground {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.heartbeat {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(233, 69, 96, 0.1);
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+}
+
+.urgency-text-container {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  height: 60%;
+  pointer-events: none;
+}
+
+.urgency-text {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e94560;
+  text-shadow: 0 0 10px rgba(233, 69, 96, 0.7);
+  opacity: 0;
+  animation: urgencyText 6s infinite;
+}
+
+.urgency-text:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+.urgency-text:nth-child(2) {
+  top: 50%;
+  left: 70%;
+  animation-delay: 2s;
+}
+.urgency-text:nth-child(3) {
+  top: 70%;
+  left: 30%;
+  animation-delay: 4s;
+}
+
+@keyframes urgencyText {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Shake */
+.screen-shake {
+  animation: screenShake 0.5s infinite;
+}
+
+@keyframes screenShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+}
+
+/* Progress Bar */
+.progress-container {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #4cc9f0, #e94560);
+  animation: progressFill 3s ease-in-out forwards;
+}
+
+@keyframes progressFill {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.fade-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: fadeInOut 4s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Toilet Screen */
+/* 全局隐藏样式修正版 */
+.hidden {
+  display: none !important;
+}
+
+/* Toilet Screen */
+#toilet-screen {
+  background-color: #1a1a2e;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Gift Toilet */
+.toilet-gift-only {
+  width: 550px;
+  height: 450px;
+  background-color: #6b4b3a;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  box-shadow: 0 0 40px rgba(100, 20, 0, 0.6);
+  animation: toiletShake 2s infinite ease-in-out;
+
+  /* ✅ 新增这两行 */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#toilet-screen h2 {
+  position: absolute;
+  top: 15%; /* 🟩 调整距离上方的高度 */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.8rem;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  z-index: 5; /* 🟩 确保在礼物框上方 */
+}
+
+.toilet-gift-only .toilet-image {
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  filter: brightness(1.2) contrast(1.3) hue-rotate(15deg);
+  animation: grossPulse 1.5s infinite ease-in-out;
+}
+
+.toilet-gift-only .gift-text {
+  color: #ff4040;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #ff0000;
+  animation: giftGlow 2s infinite alternate;
+}
+
+.next-toilet-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #4cc9f0;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.next-toilet-btn:hover {
+  background-color: #3ab0d5;
+  transform: scale(1.05);
+}
+
+@keyframes toiletShake {
+  0%,
+  100% {
+    transform: rotate(0) scale(1);
+  }
+  25% {
+    transform: rotate(2deg) scale(1.05);
+  }
+  50% {
+    transform: rotate(-2deg) scale(1.1);
+  }
+  75% {
+    transform: rotate(1deg) scale(1.05);
+  }
+}
+
+@keyframes grossPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1.2);
+  }
+  50% {
+    transform: scale(1.2) rotate(2deg) filter；brightness(1.5) hue-rotate(15deg);
+  }
+}
+
+@keyframes giftGlow {
+  0% {
+    opacity: 0.7;
+    text-shadow: 0 0 5px #ff0000;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 25px #ff3030;
+  }
+}
+
+/* 💩 Falling Poop Rain */
+#poop-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.poop {
+  position: absolute;
+  top: -50px;
+  font-size: 2.5rem;
+  animation: fall linear forwards;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.4));
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0.6;
+  }
+}
+
+/* style.css */
+/* 点击阶段新样式 */
+
+/* 游戏信息 */
+.game-info {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 20;
+}
+
+.timer,
+.counter {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid #e94560;
+  box-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
+}
+
+/* 粪便进度条 */
+.poop-progress-container {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  z-index: 15;
+}
+
+.poop-progress-background {
+  width: 100%;
+  height: 35px;
+  background-color: #3e2723;
+  border-radius: 20px;
+  border: 3px solid #5d4037;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 20px rgba(139, 69, 19, 0.5),
+    inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.poop-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #8b4513, #a0522d, #cd853f);
+  border-radius: 15px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.poop-progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.2) 2%,
+      transparent 3%
+    ),
+    radial-gradient(
+      circle at 60% 70%,
+      rgba(255, 255, 255, 0.15) 2%,
+      transparent 3%
+    ),
+    radial-gradient(
+      circle at 80% 40%,
+      rgba(255, 255, 255, 0.1) 2%,
+      transparent 3%
+    );
+  background-size: 60px 60px;
+  animation: poopTexture 4s linear infinite;
+}
+
+@keyframes poopTexture {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 60px 60px;
+  }
+}
+
+.poop-text {
+  margin-top: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #cd853f;
+  text-shadow: 0 0 8px rgba(205, 133, 63, 0.8);
+  animation: poopGlow 1.5s infinite alternate;
+}
+
+@keyframes poopGlow {
+  0% {
+    opacity: 0.7;
+    text-shadow: 0 0 5px #cd853f;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 12px #ffa500;
+  }
+}
+
+/* 摇晃的厕所 */
+.toilet-shaking {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  animation: toiletShake 0.8s infinite ease-in-out;
+}
+
+.shaking-toilet {
+  width: 380px;
+  height: 380px;
+  object-fit: contain;
+  filter: brightness(0.9) contrast(1.2) hue-rotate(-10deg)
+    drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes toiletShake {
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(-1deg) translateY(0px);
+  }
+  25% {
+    transform: translateX(-50%) rotate(2deg) translateY(-2px);
+  }
+  50% {
+    transform: translateX(-50%) rotate(-2deg) translateY(1px);
+  }
+  75% {
+    transform: translateX(-50%) rotate(1deg) translateY(-1px);
+  }
+}
+
+/* 会移动的按钮 */
+.push-btn {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #e94560, #ff6b81);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(233, 69, 96, 0.4),
+    0 0 0 3px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 20;
+  min-width: 160px;
+  justify-content: center;
+}
+
+.push-btn:hover {
+  background: linear-gradient(45deg, #ff6b81, #ff8fa3);
+  box-shadow: 0 10px 25px rgba(233, 69, 96, 0.6),
+    0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.push-btn:active {
+  transform: translateX(-50%) scale(0.95);
+  box-shadow: 0 4px 10px rgba(233, 69, 96, 0.4),
+    0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.push-btn img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+/* 按钮移动动画 */
+.moving-btn {
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 按钮移动时的闪烁效果 */
+@keyframes buttonMoveGlow {
+  0%,
+  100% {
+    box-shadow: 0 8px 20px rgba(233, 69, 96, 0.4);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(233, 69, 96, 0.8),
+      0 0 15px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.push-btn.moving {
+  animation: buttonMoveGlow 0.5s ease-in-out;
+}
