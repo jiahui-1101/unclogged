@@ -1,4 +1,4 @@
-# 🚽 Unclogged: The Hero of Your Poop 💩
+# 🚽 Unclogged: The Hero of Your 💩
 
 A hilarious and chaotic toilet-themed clicker adventure game where you race against time to unclog a stubborn toilet while dealing with unexpected interruptions!
 
